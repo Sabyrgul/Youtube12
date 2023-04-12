@@ -33,16 +33,12 @@ class PlaylistFragment : BaseFragment<FragmentPlaylistBinding,PlaylistViewModel>
     }
 
     override fun initViews() {
-        viewModel.getPlaylist()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        binding.rvPlaylist.adapter=adapter
         viewModel.getPlaylist().observe(viewLifecycleOwner){
             adapter.addData(it.items)
         }
-        binding.rvPlaylist.adapter=adapter
     }
+
     override fun initViewModel() {
 
     }

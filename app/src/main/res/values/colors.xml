@@ -10,4 +10,5 @@
     <color name="black_80">#CC000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red_primary">#FF0000</color>
+    <color name="container_color">#F6F6F6</color>
 </resources>

@@ -27,7 +27,7 @@ class PlaylistAdapter(private val onClick:(String)->Unit):RecyclerView.Adapter<P
            }
            val count=item.contentDetails?.itemCount.toString()
            val title=item.snippet?.title
-           binding.tvVideoCount.text=("$count video series")
+           binding.tvVideoCount.text=count
            binding.tvTitle.text=title
            binding.ivVideo.loadImage(item.snippet?.thumbnails?.default.toString())
 

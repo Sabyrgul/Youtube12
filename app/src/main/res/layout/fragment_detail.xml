@@ -3,19 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="@dimen/page_margin"
+    android:layout_marginEnd="@dimen/page_margin"
     tools:context=".ui.detail.DetailFragment">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/back"
-    android:textColor="@color/red_primary"
-    android:textSize="17sp"
-    android:drawableStart="@drawable/ic_back"
-    android:layout_marginTop="17dp"
-    android:id="@+id/tv_back"
-    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:textColor="@color/red_primary"
+        android:textSize="17sp"
+        android:drawableStart="@drawable/ic_back"
+        android:layout_marginTop="17dp"
+        android:id="@+id/tv_back"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,24 +29,65 @@
         android:layout_marginTop="17dp"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxWidth="328dp"
-        android:text="@string/title"
-        android:textSize="24sp"
-        android:textColor="@color/primary_color"
-        android:layout_marginTop="80dp"
-        />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_height="196dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="@color/container_color">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxWidth="328dp"
-        android:textColor="@color/primary_color"
-        android:text="@string/description"
-        android:id="@+id/tv_description"
-        android:layout_marginTop="148dp"
-        />
+
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:toolbarId="@+id/toolbar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:background="@color/container_color">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="328dp"
+                android:text="@string/title"
+                android:textSize="24sp"
+                android:textColor="@color/primary_color"
+                android:layout_marginTop="24dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="328dp"
+                android:textColor="@color/primary_color"
+                android:text="@string/description"
+                android:id="@+id/tv_description"
+                android:layout_marginTop="92dp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
++
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/btn_play"
+        android:layout_marginTop="224dp"
+        android:layout_marginStart="288dp"
+        android:id="@+id/btn_play"/>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

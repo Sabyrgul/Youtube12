@@ -13,7 +13,7 @@ import retrofit2.Response
 class PlaylistViewModel:BaseViewModel() {
 
     private val apiService=RetrofitClient.create()
-    private val playlistLiveData=MutableLiveData<Playlist>()
+     val playlistLiveData=MutableLiveData<Playlist>()
   //
 
     fun getPlaylist():LiveData<Playlist>{
@@ -23,7 +23,7 @@ class PlaylistViewModel:BaseViewModel() {
         apiService.getPlaylist().enqueue(object :Callback<Playlist>{
             override fun onResponse(call: Call<Playlist>, response: Response<Playlist>) {
                 if(response.isSuccessful){
-                    playlistLiveData.value=response.body()
+                  playlistLiveData.value=response.body()
                 }
             }
 
@@ -32,6 +32,6 @@ class PlaylistViewModel:BaseViewModel() {
             }
 
         })
-        return data
+        return playlistLiveData
     }
 }
