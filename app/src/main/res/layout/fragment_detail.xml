@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:maxWidth="328dp"
                 android:text="@string/title"
+                android:fontFamily="@font/fjallaone_regular"
                 android:textSize="24sp"
                 android:textColor="@color/primary_color"
                 android:layout_marginTop="24dp"
@@ -61,6 +62,7 @@
                 android:maxWidth="328dp"
                 android:textColor="@color/primary_color"
                 android:text="@string/description"
+                android:fontFamily="@font/noto_sans_regular"
                 android:id="@+id/tv_description"
                 android:layout_marginTop="92dp"
                 />
@@ -68,13 +70,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="250dp"
+                tools:listitem="@layout/item_detail"
                />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 +
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -89,5 +90,10 @@
         android:id="@+id/btn_play"/>
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        tools:listitem="@layout/item_detail"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

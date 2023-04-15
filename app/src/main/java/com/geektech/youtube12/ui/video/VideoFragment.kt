@@ -31,7 +31,7 @@ class VideoFragment : BaseFragment<FragmentVideoBinding,VideoViewModel>() {
         ViewModelProvider(this).get(VideoViewModel::class.java)
     }
 
-    override fun initViewModel() {
+    override fun initObservers() {
         TODO("Not yet implemented")
     }
 

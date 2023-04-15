@@ -21,7 +21,7 @@ abstract class BaseFragment<VB : ViewBinding,VM:BaseViewModel> : Fragment() {
 
     abstract fun initViews()
 
-    abstract fun initViewModel()
+    abstract fun initObservers()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +36,7 @@ abstract class BaseFragment<VB : ViewBinding,VM:BaseViewModel> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         initListeners()
-        initViewModel()
+        initObservers()
     }
 
 

@@ -13,9 +13,9 @@ import com.geektech.youtube12.databinding.FragmentPlaylistBinding
 
 class PlaylistFragment : BaseFragment<FragmentPlaylistBinding,PlaylistViewModel>(){
 
-   private val adapter:PlaylistAdapter by lazy {
-       PlaylistAdapter(this::onClick)
-   }
+    private val adapter:PlaylistAdapter by lazy {
+        PlaylistAdapter(this::onClick)
+    }
 
     override val viewModel: PlaylistViewModel by lazy {
         ViewModelProvider(this)[PlaylistViewModel::class.java]
@@ -34,12 +34,9 @@ class PlaylistFragment : BaseFragment<FragmentPlaylistBinding,PlaylistViewModel>
 
     override fun initViews() {
         binding.rvPlaylist.adapter=adapter
-        viewModel.getPlaylist().observe(viewLifecycleOwner){
+        viewModel.playlist.observe(viewLifecycleOwner){
             adapter.addData(it.items)
         }
-    }
-
-    override fun initViewModel() {
 
     }
 
@@ -47,5 +44,8 @@ class PlaylistFragment : BaseFragment<FragmentPlaylistBinding,PlaylistViewModel>
         findNavController().navigate(R.id.detailFragment, bundleOf("id" to id))
     }
 
+    override fun initObservers() {
+
+    }
 
 }

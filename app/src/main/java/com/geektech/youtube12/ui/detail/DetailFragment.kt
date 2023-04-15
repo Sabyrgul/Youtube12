@@ -19,11 +19,12 @@ class DetailFragment : BaseFragment<FragmentDetailBinding,DetailViewModel>() {
     }
 
     override fun initListeners() {
-        TODO("Not yet implemented")
+
     }
 
     override fun initViews() {
-       val id=arguments?.getString("id")
+
+        val id=arguments?.getString("id")
         viewModel.getPlaylistItems(id.toString()).observe(viewLifecycleOwner){
 
         }
@@ -34,8 +35,9 @@ class DetailFragment : BaseFragment<FragmentDetailBinding,DetailViewModel>() {
         ViewModelProvider(this).get(DetailViewModel::class.java)
     }
 
-    override fun initViewModel() {
-        TODO("Not yet implemented")
+
+    override fun initObservers() {
+
     }
 
 }
