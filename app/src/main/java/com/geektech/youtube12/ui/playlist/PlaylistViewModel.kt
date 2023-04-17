@@ -14,9 +14,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PlaylistViewModel:BaseViewModel() {
+class PlaylistViewModel : BaseViewModel() {
 
-    private val repository= Repository()
+    private val repository = Repository()
 
-    val playlist:LiveData<Playlist> = repository.getPlaylist()
+    val playlist: LiveData<Playlist> = repository.getPlaylist()
 }

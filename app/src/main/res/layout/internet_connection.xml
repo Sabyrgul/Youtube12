@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="56dp"/>
+
+    <ImageView
+        android:layout_width="228dp"
+        android:layout_height="228dp"
+        android:src="@drawable/internet_connection"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="188.69dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/iv_connection"/>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="@string/no_internet_connection"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_color"
+        android:textSize="16sp"
+        android:id="@+id/tv_no_connection"
+        android:fontFamily="@font/fjallaone_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_connection"
+        android:layout_marginTop="22.14dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_no_connection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="118dp"
+        android:layout_marginHorizontal="@dimen/page_margin"
+        android:id="@+id/btn_try_again"
+        android:text="@string/try_again"
+        android:textAllCaps="false"
+        android:fontFamily="@font/noto_sans_regular"
+        android:textSize="@dimen/page_margin"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

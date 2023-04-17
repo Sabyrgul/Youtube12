@@ -1,99 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="@dimen/page_margin"
     android:layout_marginEnd="@dimen/page_margin"
     tools:context=".ui.detail.DetailFragment">
 
     <TextView
+        android:id="@+id/tv_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:drawableStart="@drawable/ic_back"
         android:text="@string/back"
         android:textColor="@color/red_primary"
-        android:textSize="17sp"
-        android:drawableStart="@drawable/ic_back"
-        android:layout_marginTop="17dp"
-        android:id="@+id/tv_back"
-        />
+        android:textSize="17sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/playlist"
-        android:textColor="@color/red_primary"
-        android:textSize="17sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="17dp"
-        />
+        android:text="@string/playlist"
+        android:textColor="@color/red_primary"
+        android:textSize="17sp" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-        android:layout_height="196dp"
         android:layout_width="match_parent"
+        android:layout_height="196dp"
         android:layout_marginTop="56dp"
         android:background="@color/container_color">
-
 
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:toolbarId="@+id/toolbar"
+            android:background="@color/container_color"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:background="@color/container_color">
+            app:toolbarId="@+id/toolbar">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/fjallaone_regular"
                 android:maxWidth="328dp"
                 android:text="@string/title"
-                android:fontFamily="@font/fjallaone_regular"
-                android:textSize="24sp"
                 android:textColor="@color/primary_color"
-                android:layout_marginTop="24dp"
-                />
+                android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/tv_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="328dp"
-                android:textColor="@color/primary_color"
-                android:text="@string/description"
-                android:fontFamily="@font/noto_sans_regular"
-                android:id="@+id/tv_description"
                 android:layout_marginTop="92dp"
-                />
+                android:fontFamily="@font/noto_sans_regular"
+                android:maxWidth="328dp"
+                android:text="@string/description"
+                android:textColor="@color/primary_color" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="250dp"
-                tools:listitem="@layout/item_detail"
-               />
+                tools:listitem="@layout/item_detail" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-+
+        +
     </com.google.android.material.appbar.AppBarLayout>
 
 
-
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_play"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:background="@drawable/btn_play"
-        android:layout_marginTop="224dp"
         android:layout_marginStart="288dp"
-        android:id="@+id/btn_play"/>
+        android:layout_marginTop="224dp"
+        android:background="@drawable/btn_play" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
-        tools:listitem="@layout/item_detail"/>
+        tools:listitem="@layout/item_detail" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

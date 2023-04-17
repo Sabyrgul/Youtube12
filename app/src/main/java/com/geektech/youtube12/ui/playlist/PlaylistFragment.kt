@@ -11,9 +11,9 @@ import com.geektech.youtube12.R
 import com.geektech.youtube12.base.BaseFragment
 import com.geektech.youtube12.databinding.FragmentPlaylistBinding
 
-class PlaylistFragment : BaseFragment<FragmentPlaylistBinding,PlaylistViewModel>(){
+class PlaylistFragment : BaseFragment<FragmentPlaylistBinding, PlaylistViewModel>() {
 
-    private val adapter:PlaylistAdapter by lazy {
+    private val adapter: PlaylistAdapter by lazy {
         PlaylistAdapter(this::onClick)
     }
 
@@ -25,7 +25,7 @@ class PlaylistFragment : BaseFragment<FragmentPlaylistBinding,PlaylistViewModel>
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentPlaylistBinding {
-        return FragmentPlaylistBinding.inflate(inflater,container,false)
+        return FragmentPlaylistBinding.inflate(inflater, container, false)
     }
 
     override fun initListeners() {
@@ -33,14 +33,15 @@ class PlaylistFragment : BaseFragment<FragmentPlaylistBinding,PlaylistViewModel>
     }
 
     override fun initViews() {
-        binding.rvPlaylist.adapter=adapter
-        viewModel.playlist.observe(viewLifecycleOwner){
+
+        binding.rvPlaylist.adapter = adapter
+        viewModel.playlist.observe(viewLifecycleOwner) {
             adapter.addData(it.items)
         }
 
     }
 
-    private fun onClick(id:String){
+    private fun onClick(id: String) {
         findNavController().navigate(R.id.detailFragment, bundleOf("id" to id))
     }
 
