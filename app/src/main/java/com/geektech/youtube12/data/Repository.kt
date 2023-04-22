@@ -1,40 +1,46 @@
 package com.geektech.youtube12.data
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
-import androidx.paging.PagedList
-import com.geektech.youtube12.data.remote.RetrofitClient
-import com.geektech.youtube12.model.playlist.Item
+import com.geektech.youtube12.App
+import com.geektech.youtube12.data.local.AppDataBase
+import com.geektech.youtube12.data.remote.ApiService
+import com.geektech.youtube12.data.remote.Resource
 import com.geektech.youtube12.model.playlist.Playlist
 import kotlinx.coroutines.Dispatchers
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class Repository {
-
-    private val apiService = RetrofitClient.create()
+class Repository (private val apiService: ApiService, private val db:AppDataBase){
 
 
-    fun getPlaylistItems(playlistId: String): LiveData<Playlist> = liveData(Dispatchers.IO) {
-
+    fun getPlaylistItems(playlistId: String): LiveData<Resource<Playlist>> = liveData(Dispatchers.IO) {
+        emit(Resource.loading())
         val result = apiService.getPlaylistItems(playlistId = playlistId)
         if (result.isSuccessful) {
-            result.body()?.let { emit(it) }
+            Resource.success(result.body())?.let { emit(it) }
         } else {
-            Log.e("TAG", "getPlaylist: " + result.message())
+            emit(Resource.error(result.message()))
         }
     }
 
-    fun getPlaylist(): LiveData<Playlist> = liveData(Dispatchers.IO) {
-
-        val result = apiService.getPlaylist()
+    fun getPlaylist(maxResult:Int): LiveData<Resource<Playlist>> = liveData(Dispatchers.IO) {
+        emit(Resource.loading())
+        val result = apiService.getPlaylist(maxResults = maxResult)
         if (result.isSuccessful) {
-            result.body()?.let { emit(it) }
+            Resource.success(result.body())?.let { emit(it) }
         } else {
-            Log.e("TAG", "getPlaylist: " + result.message())
+            emit(Resource.error(result.message()))
         }
+    }
+
+    fun setPlaylistDb(playlist: Playlist):LiveData<Resource<Boolean>> = liveData(Dispatchers.IO){
+        emit(Resource.loading())
+        db.dao().insert(playlist)
+        Resource.success(true)?.let { emit(it) }
+    }
+
+    fun getPlaylistDb():LiveData<Resource<Playlist>> = liveData(Dispatchers.IO){
+        emit(Resource.loading())
+        val result= db.dao().getPlaylist()
+        Resource.success(result)?.let { emit(it) }
     }
 }

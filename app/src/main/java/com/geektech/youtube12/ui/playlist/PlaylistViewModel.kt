@@ -1,22 +1,45 @@
 package com.geektech.youtube12.ui.playlist
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.PagedList
-import androidx.paging.PagedListAdapter
+import androidx.lifecycle.switchMap
 import com.geektech.youtube12.base.BaseViewModel
 import com.geektech.youtube12.data.Repository
-import com.geektech.youtube12.data.remote.RetrofitClient
-import com.geektech.youtube12.model.playlist.Item
+import com.geektech.youtube12.data.remote.Resource
 import com.geektech.youtube12.model.playlist.Playlist
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class PlaylistViewModel : BaseViewModel() {
+class PlaylistViewModel(private val repository: Repository) : BaseViewModel() {
 
-    private val repository = Repository()
+    fun init(){
+        getPlaylist()
+        getPlaylistDb()
+    }
+    private val playlistCount= MutableLiveData<Int>()
+    private val setPlaylistDbLiveData=MutableLiveData<Playlist>()
+    private val getPlaylistDbLiveData=MutableLiveData<Boolean>()
+    private var maxResult=5
 
-    val playlist: LiveData<Playlist> = repository.getPlaylist()
+    val playlist = playlistCount.switchMap {
+        repository.getPlaylist(it)
+    }
+    val getPlaylistDb=getPlaylistDbLiveData.switchMap {
+        repository.getPlaylistDb()
+    }
+
+    val setPlaylistDb=setPlaylistDbLiveData.switchMap {
+        repository.setPlaylistDb(it)
+    }
+
+    fun getPlaylist(){
+        maxResult += 5
+        playlistCount.value=5
+    }
+
+    fun getPlaylistDb(){
+        getPlaylistDbLiveData.postValue(true)
+    }
+    fun setPlaylistDb(playlist: Playlist){
+        setPlaylistDbLiveData.postValue(playlist)
+    }
+
 }

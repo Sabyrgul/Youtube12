@@ -15,7 +15,7 @@ interface ApiService {
         @Query("key") key:String=BuildConfig.API_KEY,
         @Query("part")part:String= Constant.PART,
         @Query("channelId")channelId:String= Constant.CHANNEL_ID,
-        @Query("maxResults")maxResults:String= Constant.MAX_RESULT
+        @Query("maxResults")maxResults:Int= Constant.MAX_RESULT
     ): Response<Playlist>
 
     @GET("playlistItems")
@@ -23,6 +23,6 @@ interface ApiService {
         @Query("key") key:String=BuildConfig.API_KEY,
         @Query("part")part:String= Constant.PART,
         @Query("channelId")playlistId:String,
-        @Query("maxResults")maxResults:String= Constant.MAX_RESULT
+        @Query("maxResults")maxResults:Int= Constant.MAX_RESULT
     ): Response<Playlist>
 }

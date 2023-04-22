@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 abstract class BaseFragment<VB : ViewBinding,VM:BaseViewModel> : Fragment() {

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.geektech.youtube12.R
 import com.geektech.youtube12.base.BaseFragment
 import com.geektech.youtube12.databinding.FragmentVideoBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class VideoFragment : BaseFragment<FragmentVideoBinding,VideoViewModel>() {
     override fun inflateViewBinding(
@@ -27,10 +28,7 @@ class VideoFragment : BaseFragment<FragmentVideoBinding,VideoViewModel>() {
     }
 
 
-    override val viewModel: VideoViewModel by lazy {
-        ViewModelProvider(this).get(VideoViewModel::class.java)
-    }
-
+    override val viewModel: VideoViewModel by viewModel()
     override fun initObservers() {
         TODO("Not yet implemented")
     }

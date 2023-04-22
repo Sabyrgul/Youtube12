@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        val networkConnection=NetworkConnection(applicationContext)
+        val networkConnection=NetworkConnection(this)
         networkConnection.observe(this) {
             if (it) {
                 binding!!.included.root.visibility = View.GONE
