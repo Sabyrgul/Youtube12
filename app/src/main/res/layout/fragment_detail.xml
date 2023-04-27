@@ -30,6 +30,7 @@
         android:textSize="17sp" />
 
     <TextView
+        android:id="@+id/tv_playlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -50,10 +51,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll||exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/tv_main_title"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +67,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_main_title"
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/tv_description"
                 android:layout_width="wrap_content"
@@ -76,19 +77,30 @@
                 android:textColor="@color/primary_color" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_play"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_marginStart="288dp"
-        android:layout_marginTop="224dp"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="end|bottom"
         android:src="@drawable/ic_baseline_play_arrow_24"
         android:backgroundTint="@color/red_primary"/>
 
+    <TextView
+        android:id="@+id/tv_video_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="videos"
+        android:textSize="12sp"
+        android:fontFamily="@font/noto_sans_regular"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="@dimen/page_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recycler_view"

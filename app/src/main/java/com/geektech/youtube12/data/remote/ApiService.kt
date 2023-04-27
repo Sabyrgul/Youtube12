@@ -22,7 +22,7 @@ interface ApiService {
     suspend fun getPlaylistItems(
         @Query("key") key:String=BuildConfig.API_KEY,
         @Query("part")part:String= Constant.PART,
-        @Query("channelId")playlistId:String,
+        @Query("playlistId")playlistId:String,
         @Query("maxResults")maxResults:Int= Constant.MAX_RESULT
     ): Response<Playlist>
 }

@@ -7,5 +7,12 @@ data class Snippet(
     var localized: Localized? = null,
     var publishedAt: String? = null,
     var thumbnails: Thumbnails? = null,
-    var title: String? = null
+    var title: String? = null,
+    var resourceId: RecourseId? = null
 )
+
+data class RecourseId(
+    var videoId: String? = null,
+    var kind: String? = null,
+)
+

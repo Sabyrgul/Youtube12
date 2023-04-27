@@ -1,6 +1,7 @@
 package com.geektech.youtube12.di
 
 import com.geektech.youtube12.BuildConfig
+import com.geektech.youtube12.data.remote.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -31,6 +32,6 @@ fun provideRetrofit(client:OkHttpClient):Retrofit{
         .build()
 }
 
-fun provideApiService(get: Any) {
-
+fun provideApiService(retrofit: Retrofit):ApiService {
+return retrofit.create(ApiService::class.java)
 }
